@@ -21,14 +21,8 @@
 .column h1 {
   font-weight: 600;
   font-size: 56px;
+  line-height: 64.96px;
   color: var(--black-100);
-}
-
-.column p {
-  font-weight: 600;
-  font-size: 32px;
-  color: var(--black-40);
-  margin-bottom: 8px;
 }
 
 .column h1:active {

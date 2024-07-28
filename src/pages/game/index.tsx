@@ -1,16 +1,18 @@
-import Head from "next/head";
-import Link from 'next/link'
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import GameLayout from '../../components/Layouts/game-layout';
 
 export default function Game() {
   return (
-    <>
-      <main className={`${styles.main}`}>
-        <div className={styles.grid}>
-          Game 
+    <GameLayout>
+      <div>
+        <p>How old your elder brother was 10 years before you was born, mate?</p>
+
+        <div>
+          <div>10 years</div>
+          <div>11 years</div>
+          <div>12 years</div>
+          <div>14 years</div>
         </div>
-      </main>
-    </>
+      </div>
+    </GameLayout>
   );
 }
