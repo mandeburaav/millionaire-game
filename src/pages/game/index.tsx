@@ -2,12 +2,12 @@ import {
   useState,
   useEffect,
 } from 'react';
-import GameLayout from '../../components/Layouts/game-layout';
-import Sidebar from '../../components/Sidebar';
-import Questionnaire from '../../components/Questionnaire';
+import GameLayout from '@/components/Layouts/game-layout';
+import Sidebar from '@/components/Sidebar';
+import Questionnaire from '@/components/Questionnaire';
 import type {
   IQuestions,
-} from '../../components/models/questionnaire.model';
+} from '@/components/models/questionnaire.model';
 
 const Game = () => {
   const [questionsData, setQuestionsData] = useState<IQuestions[] | null>(null);

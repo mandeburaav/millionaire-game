@@ -37,6 +37,20 @@
           "WithStatement"
         ],
         "@typescript-eslint/no-unused-vars": "off"
+      },
+      "settings": {
+        "import/resolver": {
+          "node": {
+            "paths": ["src"],
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          },
+          "alias": {
+            "map": [
+              ["@", "./src"]
+            ],
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
       }
     }
   ]

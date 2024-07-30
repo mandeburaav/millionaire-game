@@ -5,10 +5,10 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Game.module.css';
-import { SvgIcon } from '../svg-icon';
+import { SvgIcon } from '@/components/svg-icon';
 import type {
   IQuestions,
-} from '../models/questionnaire.model';
+} from '@/components/models/questionnaire.model';
 
 interface IProps {
   questionData: IQuestions | null;
