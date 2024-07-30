@@ -1,3 +1,4 @@
+import type { FC, ReactNode } from 'react';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Layout.module.css';
 
@@ -6,10 +7,14 @@ const inter = Inter({
   subsets: ['latin'],
 });
 
-export default function Layout({ children }) {
-  return (
-    <main className={`${styles.main} ${inter.className}`}>
-      {children}
-    </main>
-  );
+interface IProps {
+  children: ReactNode;
 }
+
+const Layout: FC<IProps> = ({ children }) => (
+  <main className={`${styles.main} ${inter.className}`}>
+    {children}
+  </main>
+);
+
+export default Layout;

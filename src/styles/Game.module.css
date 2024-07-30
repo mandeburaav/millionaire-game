@@ -1,47 +1,156 @@
 .main {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   align-items: center;
-  padding: 0 80px;
+  padding-left: 80px;
   min-height: 100vh;
-  background: linear-gradient(to right bottom, #FFFFFF 50%, #FFF3EB 50.3%);
+  background: var(--black-5);
+  justify-content: space-between;
 }
 
-.column {
-  display: flex;
-  flex: 1 1;
+.sidebar {
+  max-width: 376px;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  padding: 0 8px;
-  flex-direction: column;
-}
-
-.column h1 {
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 64.96px;
-  color: var(--black-100);
-}
-
-.column h1:active {
-  color: red;
-}
-
-.linkButton {
-  max-width: 296px;
-  height: 64px;
-  border-radius: 12px;
-  background: var(--orange-100);
-  align-items: center;
-  justify-content: center;
+  background: var(--white-100);
   display: flex;
-  margin-top: 64px;
+  flex-direction: column-reverse;
+  row-gap: 8px;
+  justify-content: center;
 }
 
-.linkButton:active {
-  background: var(--orange-120);
+.questionnaire {
+  width: 100%;
+  padding: 122px 0;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 844px;
+}
+
+.question {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--black-100);
+  margin-top: 11px;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 32px;
+}
+
+.answer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.answer p {
+  z-index: 1;
+  font-weight: 400;
+  color: var(--black-100);
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 48px;
+  transform: translate(0, -50%);
+}
+
+.answer span {
+  font-weight: 600;
+  color: var(--orange-100);
+  font-size: 20px;
+}
+
+.answer svg {
+  stroke: var(--black-40);
+}
+
+.answer:hover svg{
+  stroke: var(--orange-100);
+}
+
+.selected svg {
+  animation: blink 1s linear infinite;
+  
+}
+
+@keyframes blink {
+  0% {
+    fill: var(--orange-5);
+    stroke: var(--orange-100);
+  }
+
+  50% {
+    stroke: var(--black-40);
+    fill: transparent;
+  }
+
+  100% {
+    fill: var(--orange-5);
+    stroke: var(--orange-100);
+  }
+}
+
+.correct svg {
+  fill: var(--green-5);
+  stroke: var(--green-100);
+}
+
+.correct:hover svg {
+  fill: var(--green-5);
+  stroke: var(--green-100);
+}
+
+.wrong svg {
+  fill: var(--red-5);
+  stroke: var(--red-100);
+}
+
+.wrong:hover svg {
+  fill: var(--red-5);
+  stroke: var(--red-100);
+}
+
+.prize {
+  position: relative;
+  display: flex;
+}
+
+.prize p {
+  font-weight: 400;
+  color: var(--black-100);
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prize svg{
+  stroke: var(--black-40);
+}
+
+.active svg {
+  stroke: var(--orange-100);
+}
+
+.active p {
+  color: var(--orange-100);
+}
+
+.finished p {
+  color: var(--black-40);
 }
 
 /* Enable hover only on non-touch devices */

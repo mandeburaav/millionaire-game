@@ -1,18 +1,45 @@
+import {
+  useState,
+  useEffect,
+} from 'react';
 import GameLayout from '../../components/Layouts/game-layout';
+import Sidebar from '../../components/Sidebar';
+import Questionnaire from '../../components/Questionnaire';
+import type {
+  IQuestions,
+} from '../../components/models/questionnaire.model';
 
-export default function Game() {
+const Game = () => {
+  const [questionsData, setQuestionsData] = useState<IQuestions[] | null>(null);
+  const [activeQuestion, setActiveQuestion] = useState<number>(0);
+
+  useEffect(() => {
+    async function fetchConfig() {
+      try {
+        const response = await fetch('/api/config');
+        const data: IQuestions[] = await response.json();
+        setQuestionsData(data);
+      } catch (error) {
+        console.warn('Failed to fetch config', error);
+      }
+    }
+
+    fetchConfig();
+  }, []);
+
   return (
     <GameLayout>
-      <div>
-        <p>How old your elder brother was 10 years before you was born, mate?</p>
-
-        <div>
-          <div>10 years</div>
-          <div>11 years</div>
-          <div>12 years</div>
-          <div>14 years</div>
-        </div>
-      </div>
+      <Questionnaire
+        questionData={questionsData?.[activeQuestion] || null}
+        activeQuestion={activeQuestion}
+        setActiveQuestion={setActiveQuestion}
+      />
+      <Sidebar
+        activeQuestion={activeQuestion}
+        prizesData={questionsData}
+      />
     </GameLayout>
   );
-}
+};
+
+export default Game;

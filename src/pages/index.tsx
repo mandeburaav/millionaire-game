@@ -23,7 +23,7 @@ export default function Home() {
       </div>
       <div className={styles.column}>
         <h1>Who wants to be a millionaire?</h1>
-        <Link className={styles.linkButton} href="/game-over">Start</Link>
+        <Link className={styles.linkButton} href="/game">Start</Link>
       </div>
     </Layout>
   );
