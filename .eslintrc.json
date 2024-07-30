@@ -1,3 +1,43 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb-base",
+    "next/core-web-vitals"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.mts"],
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "airbnb",
+        "airbnb-typescript",
+        "next/core-web-vitals"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "prefer-const": "warn",
+        "no-var": "warn",
+        "no-unused-vars": "warn",
+        "import/extensions": "off", 
+        "react/function-component-definition": "off",
+        "react/destructuring-assignment": "off",
+        "react/require-default-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "@typescript-eslint/consistent-type-imports": "error",
+        "max-len": ["error", { "code": 120 }],
+        "consistent-return": "off",
+        "no-restricted-syntax": [
+          "error",
+          "ForInStatement",
+          "LabeledStatement",
+          "WithStatement"
+        ],
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
 }
