@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/styles/Home.module.css';
+import { Inter } from 'next/font/google';
 
-import Layout from '@/components/Layouts/layout';
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+});
 
 export default function Home() {
   return (
-    <Layout>
+    <main className={`${styles.main} ${inter.className}`}>
       <div className={styles.column}>
         <Image
           src="/hand.svg"
@@ -25,6 +29,6 @@ export default function Home() {
         <h1>Who wants to be a millionaire?</h1>
         <Link className={styles.linkButton} href="/game">Start</Link>
       </div>
-    </Layout>
+    </main>
   );
 }
