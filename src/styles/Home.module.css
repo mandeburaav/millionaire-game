@@ -66,6 +66,7 @@
   .main {
     flex-direction: column;
     padding: 48px 8px;
+    min-height: auto;
   }
 
   .column {

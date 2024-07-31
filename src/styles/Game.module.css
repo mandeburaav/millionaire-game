@@ -177,6 +177,7 @@
 @media (max-width: 500px) {
   .main {
     position: relative;
+    min-height: auto;
   }
 
   .menu {
