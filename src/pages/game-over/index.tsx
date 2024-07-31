@@ -1,28 +1,23 @@
-import {
-  useState,
-  useEffect,
-} from 'react';
-import { useRouter } from 'next/router';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/styles/Home.module.css';
-import Layout from '@/components/Layouts/layout';
+import { Inter } from 'next/font/google';
+import { usePrize } from '@/components/Provider/PrizeProvider';
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+});
 
 const GameOver = () => {
-  const router = useRouter();
-  const [prize, setPrize] = useState<number | null>(null);
-
-  useEffect(() => {
-    setPrize(Number(router?.query?.prize));
-  }, [router.query]);
+  const { prize } = usePrize();
 
   return (
-    <Layout>
+    <main className={`${styles.main} ${styles.mainEnd} ${inter.className}`}>
       <div className={styles.column}>
         <Image
           src="/hand.svg"
-          alt="Vercel Logo"
+          alt="Game logo"
           className={styles.vercelLogo}
           width="624"
           height="367"
@@ -43,7 +38,7 @@ const GameOver = () => {
         </h1>
         <Link className={styles.linkButton} href="/game">Try again</Link>
       </div>
-    </Layout>
+    </main>
   );
 };
 

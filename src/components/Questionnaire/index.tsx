@@ -9,6 +9,7 @@ import { SvgIcon } from '@/components/svg-icon';
 import type {
   IQuestions,
 } from '@/components/models/questionnaire.model';
+import { usePrize } from '@/components/Provider/PrizeProvider';
 
 interface IProps {
   questionData: IQuestions | null;
@@ -29,6 +30,7 @@ const Questionnaire: FC<IProps> = ({
   const [selectedAnswer, setSelectedAnswer] = useState<ISelectedAnswer | null>(null);
   const [showResult, setShowResult] = useState<boolean>(false);
   const router = useRouter();
+  const { setPrize } = usePrize();
 
   useEffect(() => {
     if (showResult && selectedAnswer !== null) {
@@ -36,14 +38,14 @@ const Questionnaire: FC<IProps> = ({
         if (!selectedAnswer.correct) {
           setSelectedAnswer(null);
           setShowResult(false);
-          router.push({ pathname: '/game-over', query: { prize: questionData?.value } });
+          router.push('/game-over');
         }
         if (activeQuestion < 11) {
           setActiveQuestion((prev) => prev + 1);
           setSelectedAnswer(null);
           setShowResult(false);
         } else {
-          router.push({ pathname: '/game-over', query: { prize: questionData?.value } });
+          router.push('/game-over');
         }
       }, 3000);
 
@@ -67,7 +69,9 @@ const Questionnaire: FC<IProps> = ({
   const onAnswerClick = (index: number, correct: boolean) => {
     setSelectedAnswer({ index, correct });
     setShowResult(false);
-
+    if (correct === true) {
+      setPrize(questionData?.value || 0);
+    }
     setTimeout(() => {
       setShowResult(true);
     }, 2000);

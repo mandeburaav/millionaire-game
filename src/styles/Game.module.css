@@ -3,7 +3,6 @@
   flex-direction: row;
   width: 100%;
   align-items: center;
-  padding-left: 80px;
   min-height: 100vh;
   background: var(--black-5);
   justify-content: space-between;
@@ -29,6 +28,7 @@
   flex-direction: column;
   justify-content: space-between;
   max-width: 844px;
+  margin: 0 80px;
 }
 
 .question {
@@ -74,6 +74,7 @@
 
 .answer svg {
   stroke: var(--black-40);
+  fill: var(--white-100);
 }
 
 .answer:hover svg{
@@ -93,7 +94,7 @@
 
   50% {
     stroke: var(--black-40);
-    fill: transparent;
+    fill: var(--white-100);
   }
 
   100% {
@@ -153,6 +154,14 @@
   color: var(--black-40);
 }
 
+.menu {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .linkButton:hover {
@@ -165,11 +174,114 @@
 }
 
 /* Mobile */
-@media (max-width: 700px) {
+@media (max-width: 500px) {
+  .main {
+    position: relative;
+  }
 
+  .menu {
+    top: 16px;
+    right: 16px;
+    display: block;
+  }
+
+  .questionnaire {
+    padding: 64px 0 24px;
+    margin: 0;
+  }
+
+  .question {
+    font-size: 18px;
+    text-align: center;
+    margin: 0 16px;
+  }
+
+  .sidebar {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    transition: right 0.3s ease-in-out;
+    
+  }
+
+  .sidebar[data-active='true'] {
+    right: 0;
+  }
+
+  .sidebar[data-active='false'] {
+    right: -100%;
+  }
+
+  .answers {
+    grid-template-columns: 1fr;
+    padding: 16px 0;
+    row-gap: 16px;
+  }
+}
+
+
+@media (min-width: 501px) and (max-width: 700px) {
+  .main {
+    position: relative;
+  }
+
+  .menu {
+    top: 16px;
+    right: 16px;
+    display: block;
+  }
+
+  .question {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 16px;
+  }
+
+  .questionnaire {
+    padding: 136px 0 24px;
+    margin: 0;
+  }
+
+  .sidebar {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .sidebar[data-active='true'] {
+    right: 0;
+  }
+
+  .sidebar[data-active='false'] {
+    right: -100%;
+  }
 }
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
+  .main {
+    position: relative;
+  }
 
+  .menu {
+    display: block;
+    top: 24px;
+    right: 24px;
+  }
+
+  .sidebar {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .sidebar[data-active='true'] {
+    right: 0;
+  }
+
+  .sidebar[data-active='false'] {
+    right: -50%;
+  }
 }
